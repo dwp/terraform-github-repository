@@ -35,6 +35,7 @@ resource "github_team_repository" "team" {
 }
 
 resource "github_branch_protection_v3" "default" {
+  count          = var.branch_protection_enabled ? 1 : 0
   branch         = github_repository.repo.default_branch
   repository     = github_repository.repo.name
   enforce_admins = var.enforce_admins

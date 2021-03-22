@@ -141,7 +141,7 @@ variable "team_access" {
 variable "branch_protection_enabled" {
   type        = bool
   default     = true
-  description = "(Optional) Control branch protection for the defaault branch"
+  description = "(Optional) Control branch protection for the default branch"
 }
 
 variable "enforce_admins" {
