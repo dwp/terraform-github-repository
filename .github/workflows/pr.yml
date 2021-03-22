@@ -31,6 +31,7 @@ jobs:
         with:
           path: './'
           output_path: 'results.json'
+          platform_type: terraform
       - name: Display KICS Results
         run: |
           cat results.json
