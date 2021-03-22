@@ -26,13 +26,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          path: 'repo'
       - name: KICS Github Action
         uses: Checkmarx/kics-github-action@v1.0
         with:
-          path: './'
+          path: 'repo'
           output_path: 'results.json'
           platform_type: terraform
-          exclude_paths: '/github/workspace/assets/'
       - name: Display KICS Results
         run: |
           cat results.json
