@@ -32,6 +32,7 @@ jobs:
           path: './'
           output_path: 'results.json'
           platform_type: terraform
+          exclude_paths: '/github/workspace/assets/'
       - name: Display KICS Results
         run: |
           cat results.json
