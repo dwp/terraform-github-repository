@@ -1,0 +1,41 @@
+name: PR
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**/*.md'
+env:
+  TERRAFORM_VERSION: 0.14.7
+  KICS_public_repo_enabled: 15d8a7fd-465a-4d15-a868-add86552f17b
+
+jobs:
+  format:
+    name: Terraform-Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -recursive -check
+  kics-scan:
+    name: KICS Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: 'repo'
+      - name: KICS Github Action
+        uses: checkmarx/kics-action@docker-runner
+        with:
+          path: 'repo'
+          output_path: 'results.json'
+          platform_type: terraform
+          exclude_queries: ${{ env.KICS_public_repo_enabled }}
+      - name: Display KICS Results
+        run: |
+          cat results.json
