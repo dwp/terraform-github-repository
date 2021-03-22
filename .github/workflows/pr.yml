@@ -30,7 +30,7 @@ jobs:
         with:
           path: 'repo'
       - name: KICS Github Action
-        uses: Checkmarx/kics-github-action@v1.0
+        uses: checkmarx/kics-action@docker-runner
         with:
           path: 'repo'
           output_path: 'results.json'
