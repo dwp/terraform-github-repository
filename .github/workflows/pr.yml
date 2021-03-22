@@ -6,6 +6,7 @@ on:
       - '**/*.md'
 env:
   TERRAFORM_VERSION: 0.14.7
+  KICS_public_repo_enabled: 15d8a7fd-465a-4d15-a868-add86552f17b
 
 jobs:
   format:
@@ -34,6 +35,7 @@ jobs:
           path: 'repo'
           output_path: 'results.json'
           platform_type: terraform
+          exclude_queries: ${{ env.KICS_public_repo_enabled }}
       - name: Display KICS Results
         run: |
           cat results.json
