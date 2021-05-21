@@ -55,6 +55,12 @@ variable "has_wiki" {
   description = "(Optional) Enables GitHub wiki"
 }
 
+variable "is_template" {
+  type        = bool
+  default     = false
+  description = "(Optional) Tells GitHub it's a template repository"
+}
+
 variable "delete_branch_on_merge" {
   type        = bool
   default     = true

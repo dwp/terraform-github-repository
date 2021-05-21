@@ -13,6 +13,7 @@ resource "github_repository" "repo" {
   has_wiki               = var.has_wiki
   topics                 = var.topics
   archived               = var.archived
+  is_template            = var.is_template
 
   lifecycle {
     prevent_destroy = true
