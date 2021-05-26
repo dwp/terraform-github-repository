@@ -14,6 +14,7 @@ resource "github_repository" "repo" {
   topics                 = var.topics
   archived               = var.archived
   is_template            = var.is_template
+  visibility             = var.visibility
 
   lifecycle {
     prevent_destroy = true
