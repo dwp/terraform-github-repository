@@ -33,9 +33,9 @@ jobs:
         uses: checkmarx/kics-action@v1.2
         with:
           path: 'repo'
-          output_path: 'results.json'
+          output_path: 'results'
           platform_type: terraform
           exclude_queries: ${{ env.KICS_public_repo_enabled }}
       - name: Display KICS Results
         run: |
-          cat results.json
+          cat results/results.json
