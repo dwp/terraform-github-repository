@@ -30,12 +30,13 @@ jobs:
         with:
           path: 'repo'
       - name: KICS Github Action
-        uses: checkmarx/kics-action@v1.2
+        uses: checkmarx/kics-action@v1.4
         with:
           path: 'repo'
-          output_path: 'results.json'
+          output_path: 'results'
           platform_type: terraform
           exclude_queries: ${{ env.KICS_public_repo_enabled }}
+          fail_on: high,medium
       - name: Display KICS Results
         run: |
-          cat results.json
+          cat results/results.json
